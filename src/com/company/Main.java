@@ -9,9 +9,9 @@ public class Main {
     public static int bossDamage = 30;
     public static String bossDeffenceType = "";
 
-    public static int[] heroesHealth = {250, 250, 250, 250};
+    public static int[] heroesHealth = {250, 250, 250, 250, 250};
     public static int[] heroesDamage = {20, 20, 20, 20};
-    public static String[] heroesAttackType = {"Physikal", "Magical", "Mental", "Treatment"};
+    public static String[] heroesAttackType = {"Physikal", "Magical", "Mental", "Treatment", "Thor",};
 
     public static void main(String[] args) {
         printStatistic();
@@ -24,7 +24,7 @@ public class Main {
         changeBossDefence();
         heroesHit();
         bossHit();
-        treatmentOftheHeroes();
+        treatmentOfTheHeroes();
         printStatistic();
     }
 
@@ -61,7 +61,6 @@ public class Main {
     }
 
 
-
     public static void heroesHit() {
         for (int i = 0; i < heroesDamage.length - 1; i++) {
             if (heroesHealth[i] > 0) {
@@ -87,15 +86,13 @@ public class Main {
     }
 
 
+    public static void treatmentOfTheHeroes() {
+        Random random = new Random();
+        int r = random.nextInt(4);
+        if (heroesHealth[r] > 0 && heroesHealth[r] <= 100) {
+            heroesHealth[r] = heroesHealth[r] + heroesDamage[3] * r;
+            System.out.println("cured of the player " + r);
 
-    public static void treatmentOftheHeroes() {
-        for (int i = 0; i < heroesHealth.length; i++) {
-            Random random = new Random();
-            int r = random.nextInt(3) + 1;
-            int y = random.nextInt(2);
-            if (heroesHealth[3] > 0 && heroesHealth[i] <= 100) {
-                heroesHealth[y] = heroesHealth[y] + heroesDamage[3] * r;
-            }
         }
     }
 
